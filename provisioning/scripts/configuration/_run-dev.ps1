@@ -1,0 +1,1 @@
+docker run --name akh --rm --restart no -e SPN_PASSWORD=6b096842-e8f1-4ba6-988c-0e75d3dc2bf5 -v C:\repos\matrix\provisioning\scripts\configuration\:/scripts/ -w /scripts azcli-kubectl-helm sh ./configuration-dev.sh

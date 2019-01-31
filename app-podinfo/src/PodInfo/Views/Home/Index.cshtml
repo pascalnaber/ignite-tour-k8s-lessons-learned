@@ -1,0 +1,202 @@
+﻿@model Microsoft.AspNetCore.Http.HttpRequest
+@{
+    ViewData["Title"] = "Request Details";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #666;
+    }
+
+        table th, table td {
+            padding: 5px; /* Apply cell padding */
+            vertical-align: top;
+        }
+</style>
+<h2>@ViewData["Title"]</h2>
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>
+                    <b>Value</b>
+                </td>
+            </tr>
+        </thead>
+        @*<tr>
+                <td><b>Body</b></td>
+                <td>@Model.QueryString.Value</td>
+            </tr>*@
+        <tr>
+            <td><b>ContentLength</b></td>
+            <td>@Model.ContentLength</td>
+        </tr>
+        <tr>
+            <td><b>ContentType</b></td>
+            <td>@Model.ContentType</td>
+        </tr>
+        <tr>
+            <td><b>Cookies</b></td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                <b>Value</b>
+                            </td>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.Cookies)
+                    {
+                        <tr>
+                            <td><b>@item.Key</b></td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><b>HasFormContentType</b></td>
+            <td>@Model.HasFormContentType</td>
+        </tr>
+        <tr>
+            <td><b>Headers</b></td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                <b>Value</b>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.Headers)
+                    {
+                        <tr>
+                            <td><b>@item.Key</b></td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Host</b></td>
+            <td>@Model.Host</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.ClientCertificate?.FriendlyName</b></td>
+            <td>@Model.HttpContext.Connection.ClientCertificate?.FriendlyName</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.Id</b></td>
+            <td>@Model.HttpContext.Connection.Id</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.LocalIpAddress</b></td>
+            <td>@Model.HttpContext.Connection.LocalIpAddress</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.LocalPort</b></td>
+            <td>@Model.HttpContext.Connection.LocalPort</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.RemoteIpAddress</b></td>
+            <td>@Model.HttpContext.Connection.RemoteIpAddress</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Connection.RemotePort</b></td>
+            <td>@Model.HttpContext.Connection.RemotePort</td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Features</b></td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                <b>Value</b>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.HttpContext.Features)
+                    {
+                        <tr>
+                            <td><b>@item.Key</b></td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><b>HttpContext.Items</b></td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                <b>Value</b>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.HttpContext.Items)
+                    {
+                        <tr>
+                            <td><b>@item.Key</b></td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><b>IsHttps</b></td>
+            <td>@Model.IsHttps</td>
+        </tr>
+        <tr>
+            <td><b>Method</b></td>
+            <td>@Model.Method</td>
+        </tr>
+        <tr>
+            <td><b>Path</b></td>
+            <td>@Model.Path</td>
+        </tr>
+        <tr>
+            <td><b>PathBase</b></td>
+            <td>@Model.PathBase</td>
+        </tr>
+        <tr>
+            <td><b>Protocol</b></td>
+            <td>@Model.Protocol</td>
+        </tr>
+        <tr>
+            <td><b>QueryString</b></td>
+            <td>@Model.QueryString.Value</td>
+        </tr>
+        <tr>
+            <td><b>Scheme</b></td>
+            <td>@Model.Scheme</td>
+        </tr>
+
+    </table>
+</div>

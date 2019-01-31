@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Namespace
+metadata:  
+  name: __Build_Repository_Name__-__Build_SourceBranchName__
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: __Build_Repository_Name__-__Build_SourceBranchName__
+spec:  
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: podinfo
+    spec:
+      containers:
+      - name: podinfo
+        image: ohub2docker.azurecr.io/podinfo:__Build_BuildId__                
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        envFrom:
+        - configMapRef:
+            name: podinfo-configmap
+        ports:
+        - containerPort: 80   
+      imagePullSecrets:
+      - name: matriximages
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo-service
+  namespace: __Build_Repository_Name__-__Build_SourceBranchName__
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: podinfo
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: podinfo-ingress
+  namespace: __Build_Repository_Name__-__Build_SourceBranchName__
+  annotations:        
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: __Build_Repository_Name__-__Build_SourceBranchName__.dev-ignitetour.cf
+    http:
+      paths:
+      - backend:
+          serviceName: podinfo-service
+          servicePort: 80

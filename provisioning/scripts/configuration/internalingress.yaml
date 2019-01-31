@@ -1,0 +1,6 @@
+controller:
+  replicaCount: 2
+  service:
+    loadBalancerIP: 10.240.2.42
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"

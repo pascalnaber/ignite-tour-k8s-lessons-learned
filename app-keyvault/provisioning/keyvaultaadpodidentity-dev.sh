@@ -1,0 +1,8 @@
+SUBSCRIPTION_ID=186d83fa-fddb-4637-a762-918a4cc06ee0
+LOCATION=westeurope
+RESOURCEGROUP_AKS=matrix-dev-k8s
+RESOURCEGROUP_KEYVAULT=matrix-dev-keyvault
+IDENTITY_AKSKEYVAULT_NAME=identity-kv-aks-dev
+KEYVAULT_NAME=matrix-secrets-dev
+DEPLOYMENT_LABEL=matrix
+

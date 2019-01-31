@@ -1,0 +1,2 @@
+config:
+  CONNECTIONSTRING: "jdbc:postgresql://demo.postgres.database.azure.com:5432/master?ssl=true"

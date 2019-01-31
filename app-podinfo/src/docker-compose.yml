@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  podinfo:
+    image: ${DOCKER_REGISTRY-}podinfo
+    build:
+      context: .
+      dockerfile: PodInfo/Dockerfile

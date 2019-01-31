@@ -1,0 +1,17 @@
+﻿@model SecretVisualiser.Models.SecretsViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Click button to see the secrets</p>
+    <form asp-controller="Home" asp-action="GetSecrets" method="post">
+        <button class="btn btn-primary" type="submit"><h3>Show secrets</h3></button>
+    </form>
+
+    @if (Model != null)
+    {
+        @await Html.PartialAsync("Secrets", Model)
+    }
+</div>

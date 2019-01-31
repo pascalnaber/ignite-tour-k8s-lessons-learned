@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: podinfo-configmap
+  namespace: app-podinfo-master
+data:
+  CONNECTIONSTRING: "jdbc:postgresql://demo.postgres.database.azure.com:5432/master?ssl=true"
+  
